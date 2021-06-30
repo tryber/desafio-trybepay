@@ -12,11 +12,12 @@ Basta clonar o repositório
 git clone http://github.com/tryber/desafio-trybepay.git
 ```
 
-Em seguida acessar a branch do Pull Request da aula seguindo o padrão de nomenclatura das branchs **(nome-branch-aula)**
+Em seguida acessar a pasta do repositório e criar a própria branch
 
 Exemplo:
 ```sh
-git checkout nome-desafio-trybepay
+cd desafio trybepay
+git checkout -b nome-desafio-trybepay
 ```
 
 ---
