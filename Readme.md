@@ -16,7 +16,7 @@ Em seguida acessar a pasta do repositório e criar a própria branch
 
 Exemplo:
 ```sh
-cd desafio trybepay
+cd desafio-trybepay
 git checkout -b nome-desafio-trybepay
 ```
 
