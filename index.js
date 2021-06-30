@@ -1,14 +1,16 @@
-// var app = require('./config/custom-express')();
-var express = require('express');
-var pagamentoController = require('./controllers/pagamento');
+const express = require('express');
+const routes = require('./routes');
+const middlewares = require('./middlewares');
 
-var app = express();
-app.use(express.urlencoded({extended:true}));
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/pagamentos', pagamentoController);
+app.use(routes);
 
-app.listen(3001, function(){
-  console.log("Servidor rodando!");
-});
+app.use(middlewares.error);
 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}!`));
