@@ -21,9 +21,12 @@ const findAll = () => PaymentModel.findAll();
 
 const findById = (id) => PaymentModel.findById(id);
 
+const remove = (id) => PaymentModel.remove(id);
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
+  remove,
 };

@@ -8,5 +8,6 @@ router.get('/', PagamentoController.findAll);
 router.post('/', PagamentoController.create);
 router.put('/confirm/:id', PagamentoController.confirm);
 router.put('/cancel/:id', PagamentoController.cancel);
+router.delete('/:id', PagamentoController.remove);
 
 module.exports = router;

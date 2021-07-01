@@ -29,10 +29,21 @@ const update = async (paymentId, paymentData) => {
   const keys = Object.keys(paymentData);
   const fields = keys.map((field) => `${field} = ?`).join(', ');
   const SQL = `UPDATE payments SET ${fields} WHERE id = ?`;
-  
+
   const connection = await connectionFactory();
-  const result = connection.query(SQL, [...Object.values(paymentData), paymentId]);
-  return result;
+  const [{ affectedRows }] = await connection.query(
+    SQL, [...Object.values(paymentData), paymentId],
+  );
+  if (!affectedRows) throw new Error(`Fail to update payment with id ${paymentId}`);
+  return { message: `Payment ${paymentId} updated` };
+};
+
+const remove = async (paymentId) => {
+  const SQL = 'DELETE FROM payments WHERE id = ?';
+  const connection = await connectionFactory();
+  const [{ affectedRows }] = await connection.query(SQL, [paymentId]);
+  if (!affectedRows) throw new Error(`Fail to remove payment with id ${paymentId}`);
+  return { message: `Payment ${paymentId} removed` };
 };
 
 module.exports = {
@@ -40,4 +51,5 @@ module.exports = {
   findAll,
   findById,
   update,
+  remove,
 };
