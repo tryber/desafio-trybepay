@@ -7,8 +7,8 @@ const create = async (newPayment) => {
   const SQL = `INSERT INTO payments (${fields}) VALUES (${placeholders})`;
 
   const connection = await connectionFactory();
-  const [result] = await connection.query(SQL, Object.values(newPayment));
-  return result;
+  const [{ insertId }] = await connection.query(SQL, Object.values(newPayment));
+  return { id: insertId, ...newPayment };
 };
 
 const findAll = async () => {
@@ -25,12 +25,13 @@ const findById = async (id, callback) => {
   return result;
 };
 
-const update = async (paymentData) => {
-  const fields = Object.keys(paymentData).map((key) => `${key} = ?`).join(' ');
+const update = async (paymentId, paymentData) => {
+  const keys = Object.keys(paymentData);
+  const fields = keys.map((field) => `${field} = ?`).join(', ');
   const SQL = `UPDATE payments SET ${fields} WHERE id = ?`;
-
+  
   const connection = await connectionFactory();
-  const [result] = connection.query(SQL, Object.values(paymentData));
+  const result = connection.query(SQL, [...Object.values(paymentData), paymentId]);
   return result;
 };
 

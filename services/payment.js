@@ -1,13 +1,20 @@
 const PaymentModel = require('../persist/paymentDao');
 const PaymentSchema = require('../schema/payment');
 
-// const update = (paymentData) => PaymentModel.update(paymentData);
-
 const create = async (newPayment) => {
   const { error } = PaymentSchema.validate(newPayment);
-  console.log(error);
   if (error) throw error;
   return PaymentModel.create(newPayment);
+};
+
+const update = async (paymentId, paymentData) => {
+  const { error } = PaymentSchema
+    .fork(['paymentMethod', 'value', 'currency'], (schema) => schema.optional())
+    .validate(paymentData);
+
+  if (error) throw error;
+
+  return PaymentModel.update(paymentId, paymentData);
 };
 
 const findAll = () => PaymentModel.findAll();
@@ -18,4 +25,5 @@ module.exports = {
   create,
   findAll,
   findById,
+  update,
 };

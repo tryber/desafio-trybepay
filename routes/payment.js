@@ -6,7 +6,7 @@ const PagamentoController = require('../controllers/payment');
 router.get('/:id', PagamentoController.findById);
 router.get('/', PagamentoController.findAll);
 router.post('/', PagamentoController.create);
-// router.delete('/:id', PagamentoController.remove);
-// router.put('/:id', PagamentoController.update);
+router.put('/confirm/:id', PagamentoController.confirm);
+router.put('/cancel/:id', PagamentoController.cancel);
 
 module.exports = router;
