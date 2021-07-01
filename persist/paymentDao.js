@@ -34,7 +34,7 @@ const update = async (paymentId, paymentData) => {
   const [{ affectedRows }] = await connection.query(
     SQL, [...Object.values(paymentData), paymentId],
   );
-  if (!affectedRows) throw new Error(`Fail to update payment with id ${paymentId}`);
+  if (!affectedRows) throw new Error(`Failed to update payment with id ${paymentId}`);
   return { message: `Payment ${paymentId} updated` };
 };
 
@@ -42,7 +42,7 @@ const remove = async (paymentId) => {
   const SQL = 'DELETE FROM payments WHERE id = ?';
   const connection = await connectionFactory();
   const [{ affectedRows }] = await connection.query(SQL, [paymentId]);
-  if (!affectedRows) throw new Error(`Fail to remove payment with id ${paymentId}`);
+  if (!affectedRows) throw new Error(`Failed to remove payment with id ${paymentId}`);
   return { message: `Payment ${paymentId} removed` };
 };
 

@@ -65,6 +65,8 @@ Acesse o arquivo `connectionFactory.js` e altere os dados para realizar a conex�
 
 Bom desafio!
 
+---
+
 ## Configurando o .env
 
 Para rodar o projeto execute o comando `npm install` e crie um arquivo `.env` com as seguintes chaves preenchidas de acordo com as configurações locais.

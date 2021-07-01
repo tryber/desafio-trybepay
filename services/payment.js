@@ -1,10 +1,10 @@
-const PaymentModel = require('../persist/paymentDao');
+const { Payment } = require('../models');
 const PaymentSchema = require('../schema/payment');
 
 const create = async (newPayment) => {
   const { error } = PaymentSchema.validate(newPayment);
   if (error) throw error;
-  return PaymentModel.create(newPayment);
+  return Payment.create(newPayment);
 };
 
 const update = async (paymentId, paymentData) => {
@@ -14,14 +14,20 @@ const update = async (paymentId, paymentData) => {
 
   if (error) throw error;
 
-  return PaymentModel.update(paymentId, paymentData);
+  const [affectedRows] = await Payment.update(paymentData, { where: { id: paymentId } });
+  if (!affectedRows) throw new Error(`Failed to update payment with id ${paymentId}`);
+  return { message: `Payment ${paymentId} updated` };
 };
 
-const findAll = () => PaymentModel.findAll();
+const findAll = () => Payment.findAll();
 
-const findById = (id) => PaymentModel.findById(id);
+const findById = (id) => Payment.findOne({ where: { id } });
 
-const remove = (id) => PaymentModel.remove(id);
+const remove = async (id) => {
+  const destroyedRowsNum = await Payment.destroy({ where: { id } });
+  if (!destroyedRowsNum) throw new Error(`Failed to remove payment with id ${id}`);
+  return { message: `Payment ${id} removed` };
+};
 
 module.exports = {
   create,
