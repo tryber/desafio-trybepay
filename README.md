@@ -64,3 +64,17 @@ Acesse o arquivo `paytrybe.sql` e rode em seu banco de dados MySQL o script para
 Acesse o arquivo `connectionFactory.js` e altere os dados para realizar a conexão com seu banco de dados MySQL. 
 
 Bom desafio!
+
+## Configurando o .env
+
+Para rodar o projeto execute o comando `npm install` e crie um arquivo `.env` com as seguintes chaves preenchidas de acordo com as configurações locais.
+
+```bash
+MYSQL_USER=
+MYSQL_PASSWORD=
+MYSQL_DATABASE=
+HOSTNAME=
+PORT=
+```
+
+Em seguida execute `npm start`.
