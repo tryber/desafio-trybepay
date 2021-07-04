@@ -1,35 +1,32 @@
 # Repositório de desafio extra para estudantes da Turma 8 (Infinito <3)
 
-## Refactoring API - Refatoração de uma  uma API para fazer com que ela passe a usar o Sequelize para realizar as operações de I/O.
+Este repositório armazena os códigos e scripts para o desafio proposto para a **Turma 8**.
 
-Este repositório armazena os códigos e scripts para o desafio proposto para a Turma 8.
+Refatore a API fazendo com que ela passe a usar o **Sequelize** para realizar as operações de I/O.
 
 ## Começando
 
-Basta clonar o repositório
+Basta clonar o repositório com o seguinte comando:
 
 ```sh
 git clone http://github.com/tryber/desafio-trybepay.git
 ```
 
-Em seguida acessar a pasta do repositório e criar a própria branch
+Em seguida acessar a pasta do repositório e crie a própria branch.
 
-Exemplo:
 ```sh
 cd desafio-trybepay
 git checkout -b nome-desafio-trybepay
 ```
-
 ---
 
-### Estrutura
+## Estrutura
 
 Todo conteudo para realizar o desafio estará no seu respectivo Pull Request!
 
 ---
 
-
-### Desafio
+## Desafio
 
 Este repositório armazena os códigos de uma API cujo o acesso ao banco de dados é feito via DAO e as queries são escritas diretamente no código.
 
@@ -39,9 +36,11 @@ Seu desafio é realizar:
 
 2 - Aplicar o princípio da inversão de dependência do SOLID para a conexão com o banco de dados.
 
-### Detalhes
+---
 
-Para acessar o CRUD do seu endopoint, acesse via Postman ose seguintes endereços:
+## Detalhes
+
+Para acessar o CRUD do seu endpoint use os seguintes endpoints:
 
 Listar pagamentos: GET - `http://localhost:3001/pagamentos`
 
@@ -49,10 +48,10 @@ Criar pagamento: POST - `http://localhost:3001/pagamentos`
 
 ```javascript
 {
-	"forma_de_pagamento":"trybepay",
-	"valor":"300",
-	"moeda":"US$",
-	"descricao":"compra realizada"
+  "forma_de_pagamento":"trybepay",
+  "valor":"300",
+  "moeda":"US$",
+  "descricao":"compra realizada"
 }
 ```
 
@@ -65,3 +64,19 @@ Acesse o arquivo `paytrybe.sql` e rode em seu banco de dados MySQL o script para
 Acesse o arquivo `connectionFactory.js` e altere os dados para realizar a conexão com seu banco de dados MySQL. 
 
 Bom desafio!
+
+---
+
+## Configurando o .env
+
+Para rodar o projeto execute o comando `npm install` e crie um arquivo `.env` com as seguintes chaves preenchidas de acordo com as configurações locais.
+
+```bash
+MYSQL_USER=
+MYSQL_PASSWORD=
+MYSQL_DATABASE=
+HOSTNAME=
+PORT=
+```
+
+Em seguida execute `npm start`.

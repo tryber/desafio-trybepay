@@ -16,32 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pagamentos`
+-- Table structure for table `payments`
 --
 
-DROP TABLE IF EXISTS `pagamentos`;
+DROP DATABASE IF EXISTS trybepay;
+CREATE DATABASE trybepay;
+USE trybepay;
+
+DROP TABLE IF EXISTS `payments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pagamentos` (
+CREATE TABLE `payments` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `forma_de_pagamento` varchar(255) NOT NULL,
-  `valor` decimal(10,2) NOT NULL,
-  `moeda` varchar(3) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `data` date DEFAULT NULL,
-  `descricao` text,
+  `paymentMethod` varchar(255) NOT NULL,
+  `value` decimal(10,2) NOT NULL,
+  `currency` varchar(3) NOT NULL,
+  `status` varchar(255) DEFAULT 'CRIADO',
+  `data` datetime DEFAULT CURRENT_TIMESTAMP,
+  `description` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pagamentos`
+-- Dumping data for table `payments`
 --
 
-LOCK TABLES `pagamentos` WRITE;
-/*!40000 ALTER TABLE `pagamentos` DISABLE KEYS */;
-INSERT INTO `pagamentos` VALUES (1,'vanillapay',100.90,'BRL','CRIADO','2020-09-13','compra realizada'),(2,'vanillapay',100.90,'BRL','CANCELADO','2020-09-13','compra realizada'),(3,'vanillapay',98.70,'BRL','CANCELADO','2020-09-16','compra realizada'),(4,'trybepay',1000.00,'US$','CANCELADO','2021-06-29','compra realizada'),(5,'trybepay',1000.00,'US$','CANCELADO','2021-06-29','compra realizada'),(6,'trybepay',300.00,'US$','CRIADO','2021-06-30','compra realizada');
-/*!40000 ALTER TABLE `pagamentos` ENABLE KEYS */;
+LOCK TABLES `payments` WRITE;
+/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (1,'vanillapay',100.90,'BRL','CRIADO','2020-09-13','compra realizada'),(2,'vanillapay',100.90,'BRL','CANCELADO','2020-09-13','compra realizada'),(3,'vanillapay',98.70,'BRL','CANCELADO','2020-09-16','compra realizada'),(4,'trybepay',1000.00,'US$','CANCELADO','2021-06-29','compra realizada'),(5,'trybepay',1000.00,'US$','CANCELADO','2021-06-29','compra realizada'),(6,'trybepay',300.00,'US$','CRIADO','2021-06-30','compra realizada');
+/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
