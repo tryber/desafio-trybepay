@@ -48,10 +48,10 @@ Criar pagamento: POST - `http://localhost:3001/pagamentos`
 
 ```javascript
 {
-	"forma_de_pagamento":"trybepay",
-	"valor":"300",
-	"moeda":"US$",
-	"descricao":"compra realizada"
+  "forma_de_pagamento":"trybepay",
+  "valor":"300",
+  "moeda":"US$",
+  "descricao":"compra realizada"
 }
 ```
 
